@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const cart = useSelector((state) => state.cart);
+  const location = useLocation();
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+      <nav className="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Toolkit Store
@@ -23,14 +27,31 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link " aria-current="page" to="/">
+                <Link
+                  className={`nav-link ${
+                    location.pathname === "/" ? "active" : ""
+                  }`}
+                  aria-current="page"
+                  to="/"
+                >
                   Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${
+                    location.pathname === "/cart" ? "active" : ""
+                  }`}
+                  aria-current="page"
+                  to="/cart"
+                >
+                  Cart
                 </Link>
               </li>
             </ul>
             <form className="d-flex" role="search">
               <button className="btn btn-primary " type="button">
-                Cart Item: 0
+                Cart Item: {cart.length}
               </button>
             </form>
           </div>

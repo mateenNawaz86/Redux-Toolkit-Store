@@ -14,10 +14,47 @@ body {
   background: whitesmoke;
 }
 
+.main__container {
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+}
+
 .product__item-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+}
+
+/* styling for the cart */
+.cart__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 1rem;
+}
+
+.cart__inner-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#cart__img {
+  height: 100px;
+}
+
+.cart__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#cart__title {
+  font-size: 1rem;
+  letter-spacing: 0.6px;
+}
+
+#item__price {
+  font-size: 13px;
 }
 
 @media screen and (max-width: 992px) {
